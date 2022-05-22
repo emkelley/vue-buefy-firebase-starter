@@ -1,4 +1,4 @@
-# Starter project for Vue+Buefy+Firebase apps
+# Starter project for Vue 2 + Buefy + Firebase apps
 
 ## Project setup
 ```
