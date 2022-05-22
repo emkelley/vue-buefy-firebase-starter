@@ -1,22 +1,29 @@
 <template>
   <div id="app">
+    <the-navbar />
     <router-view />
   </div>
 </template>
+<script>
+import TheNavbar from "@/components/TheNavbar.vue";
+export default {
+  components: { TheNavbar },
+  data() {
+    return {
+      msg: "Hello Vue!",
+    };
+  },
+};
+</script>
 
 <style lang="scss">
-#app {
-  font-family: "Inter", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
-}
-// Import Bulma's core
+// https://buefy.org/documentation/customization
+
 // Import Bulma's core
 @import "~bulma/sass/utilities/_all";
 
 // Set your colors
-$primary: #00024a;
+$primary: #8c67ef;
 $primary-light: findLightColor($primary);
 $primary-dark: findDarkColor($primary);
 $primary-invert: findColorInvert($primary);

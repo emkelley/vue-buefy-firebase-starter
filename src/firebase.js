@@ -1,19 +1,20 @@
-import firebase from "firebase";
+import { initializeApp } from "firebase/app";
+import { getFirestore, collection, addDoc } from "firebase/firestore";
 
-const config = {
-  // Firebase config here
+// TODO: Replace the following with your app's Firebase project configuration
+// See: https://firebase.google.com/docs/web/learn-more#config-object
+const firebaseConfig = {
+  // ...
 };
 
-const firebaseApp = firebase.initializeApp(config);
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
 
-const db = firebaseApp.firestore();
-const usersCollection = db.collection("users");
-
-export const getUser = async (id) => {
-  const user = await usersCollection.doc(id).get();
-  return user.exists ? user.data() : null;
-};
-
-export const logout = () => {
-  firebase.auth().signOut();
+export const addUser = async (data) => {
+  try {
+    const docRef = await addDoc(collection(db, "users"), data);
+    console.log("Document written with ID: ", docRef.id);
+  } catch (e) {
+    console.error("Error adding document: ", e);
+  }
 };
